@@ -1,0 +1,32 @@
+universe: [AAPL, MSFT, NVDA]
+fallback: IBIT
+timeframe: "1D"
+
+allocation_pct: 1.0
+use_atr_bracket: true
+
+bracket_atr:
+  tp_atr_mult: 2.0     # take-profit at +2 × ATR
+  sl_atr_mult: 1.0     # stop-loss at -1 × ATR
+
+# If you prefer percentage exits, set use_atr_bracket: false and use this instead:
+bracket_pct:
+  take_profit_pct: 0.08
+  stop_loss_pct: 0.04
+
+rules:
+  ma_window: 50
+  atr_window: 14
+  dev_atr_min: 0.5     # enter when 0.5–1.8 ATR above the SMA50
+  dev_atr_max: 1.8
+  vol_window: 20
+  vol_min_ratio: 1.1   # optional volume confirmation
+
+scan:
+  evaluate_after_open_minutes: 5
+  evaluate_before_close_minutes: 10
+  cooldown_same_symbol_days: 1
+
+behavior:
+  single_position_only: true
+  enter_fallback_if_no_signal: true
